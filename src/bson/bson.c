@@ -537,6 +537,11 @@ _bson_append_bson_end (bson_t *bson,   /* IN */
    bson->len = (bson->len + child->len - 5);
 
    /*
+    * Unmark the STATIC flag.
+    */
+   child->flags &= ~BSON_FLAG_STATIC;
+
+   /*
     * Ensure we have a \0 byte at the end and proper length encoded at
     * the beginning of the document.
     */
